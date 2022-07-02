@@ -64,3 +64,73 @@ h1{
     background-color: #301dad2e;
     color: var(--accent);
 }
+#diarist,
+#muse,
+#logger,
+#storyteller{
+    margin-top: 50px;
+}
+
+#diarist div, 
+#muse div, 
+#register div,
+#logger div,
+#storyteller div{
+    font-size: 25px;
+    position: absolute;
+    top: -30px;
+    height: auto;
+    text-align: center;
+    left: 150px;
+}
+
+#diarist p, 
+#register p,
+#muse p, 
+#storyteller p{
+    position: absolute;
+    top: -5px;
+    height: auto;
+    text-align: center;
+    left: 80px;
+}
+
+#logger p{
+    position: absolute;
+    top: -5px;
+    height: auto;
+    text-align: center;
+    left: 130px;
+}
+
+
+
+#diarist img, 
+#muse img, 
+#register img,
+#logger img,
+#storyteller img{
+    position: relative;
+    width: 230px;
+    height: auto;
+}
+
+#diarist span, 
+#muse span, 
+#logger span,
+#register span,
+#storyteller span{
+    padding: 50px;
+    position: relative;
+    height: 800px;
+}
+
+
+#diarist #diarist1, 
+#muse #muse4, 
+#logger #logger4{
+    margin-top: -100px;
+}
+
+
+
