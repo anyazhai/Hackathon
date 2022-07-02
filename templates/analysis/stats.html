@@ -1,0 +1,190 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | User Statistics
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'journal/stats.css' %}">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<body>
+
+{% if emotion_data %}
+<canvas id="myChart1" style="width:100%;max-width:800px"></canvas>
+{% else %}
+Sufficient data unavailable.
+{% endif %}
+
+{% if emotion_data_last %}
+<canvas id="myChart0" style="width:100%;max-width:800px"></canvas>
+{% else %}
+Sufficient data unavailable. Write your first entry!
+{% endif %}
+
+{% if emotion_data_weekly %}
+<canvas id="myChart2" style="width:100%;max-width:800px"></canvas>
+{% else %}
+Sufficient data unavailable.
+{% endif %}
+
+{% if emotion_data_monthly %}
+<canvas id="myChart3" style="width:100%;max-width:800px"></canvas>
+{% else %}
+Sufficient data unavailable.
+{% endif %}
+
+<canvas id="myBar" style="width:100%;max-width:600px"></canvas>
+
+<p>Total number of days active: {{ regularity_model_len }}</p>
+
+<a href="{% link 'suggestions' %}">Suggestions</a>
+
+<script>
+  var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
+  var yValues = [{{ emotion_data_last.Happy }}, {{ emotion_data_last.Angry }}, {{ emotion_data_last.Sad }}, {{ emotion_data_last.Surprise }},
+            {{ emotion_data_last.Fear }}];
+    var barColors = [
+      "#1572A1",
+      "#9AD0EC",
+      "#EFDAD7",
+      "#E3BEC6",
+      "#FFDFD3",
+    ];
+  new Chart("myChart0", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Last Entry's Analysis"
+    }
+  }
+});
+</script>
+
+<script>
+  var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
+  var yValues = [{{ emotion_data.Happy }}, {{ emotion_data.Angry }}, {{ emotion_data.Sad }}, {{ emotion_data.Surprise }},
+            {{ emotion_data.Fear }}];
+    var barColors = [
+      "#1572A1",
+      "#9AD0EC",
+      "#EFDAD7",
+      "#E3BEC6",
+      "#FFDFD3",
+    ];
+  new Chart("myChart1", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Overall Mood Analysis"
+    }
+  }
+});
+</script>
+
+<script>
+  var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
+  var yValues = [{{ emotion_data_weekly.Happy }}, {{ emotion_data_weekly.Angry }}, {{ emotion_data_weekly.Sad }}, {{ emotion_data_weekly.Surprise }},
+            {{ emotion_data_weekly.Fear }}];
+    var barColors = [
+      "#1572A1",
+      "#9AD0EC",
+      "#EFDAD7",
+      "#E3BEC6",
+      "#FFDFD3",
+    ];
+  new Chart("myChart2", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Weekly Mood Analysis"
+    }
+  }
+});
+</script>
+
+<script>
+  var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
+  var yValues = [{{ emotion_data_monthly.Happy }}, {{ emotion_data_monthly.Angry }}, {{ emotion_data_monthly.Sad }}, {{ emotion_data_monthly.Surprise }},
+            {{ emotion_data_monthly.Fear }}];
+    var barColors = [
+      "#1572A1",
+      "#9AD0EC",
+      "#EFDAD7",
+      "#E3BEC6",
+      "#FFDFD3",
+    ];
+  new Chart("myChart3", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Monthly Mood Analysis"
+    }
+  }
+});
+</script>
+
+<script>
+var xValues = {{ regularity_model_x|safe }};
+var yValues = {{ regularity_model_y|safe }};
+new Chart("myBar", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Frequency Mapper"
+    },
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max:100}}],
+    }
+  }
+});
+</script>
+
+</body>
+{% endblock %}

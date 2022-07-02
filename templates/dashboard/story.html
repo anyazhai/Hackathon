@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Eudaimonia | {{ story.title }}
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+
+<body  class="story">
+    <br><br><br>
+        <div class="story-container">
+            <h1>{{ story.title }}</h1>
+            <b>{{ story.date }}</b>
+            {% if story.image %}
+            <img src="{{ story.image.url }}" />
+            {% endif %}
+            <p>{{ story.post }}</p>
+        </div>
+</body>
+{% endblock %}

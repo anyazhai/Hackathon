@@ -1,0 +1,458 @@
+/*Landing page*/
+
+/*The Quotation*/
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+/*showcase*/
+button {
+    border-radius: 0px;
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.774);
+    background: none;
+    font-size: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.774);
+    height: 50px;
+    width: 250px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.262);
+    color: var(--primarycolor)
+}
+
+#container-in{
+    margin: 100px;
+}
+
+.showcase {
+    z-index: 1;
+    height: fit-content;
+    width: 100%;
+}
+
+/* showcase top */
+
+
+#cursor {
+    pointer-events: none;
+    display: none;
+    position: fixed;
+    top: var(--cursorY);
+    left: var(--cursorX);
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition-timing-function: ease-in-out;
+  }
+
+.showcase-text{
+    margin-top: 200px;
+    margin-right: 300px;
+}
+
+#showcase-text-quote-top,
+#showcase-text-quote-bottom{
+    position: absolute;
+    top: 200px;
+    font-size: 8em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 7px;
+    line-height: 150px;
+    -webkit-text-stroke-width: 2px;
+}
+
+
+#showcase-text-quote-top{
+	color: transparent;
+	-webkit-text-stroke: 2px #301dad;
+}
+
+#showcase-text-quote-bottom {
+	color: #301dad;
+	animation: animate 4s ease-in-out infinite;
+}
+
+#showcase-text-quote-rest{
+    width: 800px;
+    margin-left: 50px;
+    margin-top: 350px;
+    font-size: 3.2em;
+    font-weight: 100;
+    line-height: 70px;
+    letter-spacing: 2px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#showcase-text-quote-by{
+    margin-left: 50px;
+    margin-top: 100px;
+    font-family: sans-serif;
+}
+
+#stroke{
+    position: absolute;
+    top: 0;
+}
+
+#laptop{
+    position: absolute;
+    top: 60px;
+    right: 130px;
+}
+
+#book{
+    position: absolute;
+    top: 400px;
+    right: 0px;
+}
+
+#line{
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+
+#stroke{
+    display: inline-block;
+    height: 100%;
+}
+
+#book path,
+#laptop path {
+    stroke-dasharray: 5000;
+    stroke-dashoffset: 5000;
+    animation-name: dash;
+    animation-duration: 12s;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+    animation-iteration-count: infinite;
+}
+
+#laptop path{
+    animation-delay: 6s;
+    animation-direction: alternate-reverse;
+}
+
+/* #laptop path{
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+    animation: dash 6s linear alternate infinite;
+} */
+
+@keyframes dash {
+    0%,
+    100%{
+        stroke-dashoffset: 5000;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes animate {
+	0%,
+	100% {
+		clip-path: polygon(
+			0% 45%,
+			16% 44%,
+			33% 50%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0% 100%
+		);
+	}
+}
+
+
+
+
+
+
+
+.showcase-text h1{
+    color: var(--primarycolor);
+    padding: 10px 0;
+    line-height: 55px;
+    width: 550px;
+    height: auto;
+    text-align: right;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.showcase h2{
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+    margin-top: 60px;
+    color: var(--primarycolor);
+    font-size: 23px;
+}
+
+#color-contain{
+    background-color: #301dad;
+}
+
+.full-text{
+    height: fit-content;
+}
+
+.content {
+    max-width: 70%;
+}
+
+.showcase-text-left a{
+    color: rgba(255, 255, 255, 0.774);
+}
+
+.showcase-text-left a:hover{
+    text-decoration: underline;
+}
+
+.showcase-text-left{
+    color: rgba(255, 255, 255, 0.774);
+    margin-left: 0px;
+    padding-top: 50px;
+    max-width: 65%;
+}
+
+.showcase-text-left p{
+    color: rgba(255, 255, 255, 0.774);
+    font-size: 19px;
+    line-height: 30px;
+}
+
+
+.showcase-text div a:hover{
+    text-decoration: underline;
+}
+
+
+/*End of showcasetext*/
+
+/*Features*/
+
+
+#features{
+    height: 410vh;
+    position: relative;
+    background-color: #fffffffa;
+    background-image: url(../images/blueill.png);
+    padding-left: 100px;
+}
+
+.cover h1{
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    font-weight:lighter;
+}
+
+.cover p{
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.cover a{
+    font-size: 23px;
+    line-height: 70px;
+    color: var(--accent);
+
+}
+
+.cover a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+#feature1{
+    transition: transform .3s;
+    background-color: white;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    width: 550px;
+    height: 400px;
+}
+
+#feature2{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 330px;
+    margin-left: 53%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+#feature3{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 730px;
+    margin-left: 10%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 530px;
+    height: 360px;
+}
+
+#feature4{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 1300px;
+    margin-left: 30%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+#feature5{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 1800px;
+    margin-left: 1%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+
+#feature6{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 2200px;
+    margin-left: 55%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+
+#feature7{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 2600px;
+    margin-left: 20%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+
+#feature1:hover, 
+#feature2:hover,
+#feature3:hover,
+#feature4:hover,
+#feature5:hover,
+#feature6:hover,
+#feature7:hover{
+    transform: scale(1.06);
+}
+
+#feature1:hover p, 
+#feature2:hover p,
+#feature3:hover p,
+#feature4:hover p,
+#feature1:hover h1, 
+#feature2:hover h1,
+#feature3:hover h1,
+#feature5:hover p,
+#feature6:hover p,
+#feature7:hover p,
+#feature5:hover h1, 
+#feature6:hover h1,
+#feature7:hover h1,
+#feature4:hover h1{
+    animation-name: colorflicker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+    animation-iteration-count: 1;
+}
+
+@keyframes colorflicker {
+    0% , 100%{
+        color: black;
+    }
+    20%{
+        color: #301dad44;
+    }
+    30%{
+        color: #301dadb2;
+    }
+    450%{
+        color: #301dad8b;
+    }
+    50%{
+        color: #301dad;
+    }
+    75%{
+        color: #301dad3d;
+    }
+    80%{
+        color: #301dadd1;
+    }
+    90%{
+        color: #301dadbf;
+    }
+}
+/*End of features*/
+
+
+/*Footer*/
+#footer{
+    height: 200px;
+    background-color: #301dad;
+}
+/*End of Footer*/
+/*End of Landing page*/
+
+
+
+/*Services*/
+
+.services{
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.test-heading{
+    color: var(--accent);
+    font-size: 30px;
+}

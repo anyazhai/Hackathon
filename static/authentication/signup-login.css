@@ -1,0 +1,180 @@
+
+
+
+
+
+/*card and form input*/
+
+.card h4{
+    padding-bottom: 20px;
+    color: var(--sec);
+}
+
+.card h1, .card h4{
+    text-align: center;
+}
+
+.card h5{
+    cursor: pointer;
+    margin-top: 7px;
+    font-size: 12px;
+}
+
+.card h5 a:hover{
+    text-decoration: underline;
+}
+
+.card p{
+    text-align: center;
+    font-size: 15px;
+}
+
+.card p a:hover{
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.card{
+    height: auto;
+}
+
+.card input[type='text'],
+.card input[type='email'],
+.card input[type='password'],
+.card textarea{
+    background-color: none;
+    border: 0;
+    color: var(--sec);
+    margin: auto;
+    margin-top: 5px;
+    border-bottom: 1px solid var(--primary-dark);
+    width: 100%;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    mix-blend-mode: multiply;
+    font-size: 16px;
+}
+
+.card input:focus,
+.card textarea:focus{
+    outline: none;
+}
+
+.card div{
+    color: var(--primarycolor);
+    padding: 15px;
+}
+
+.card input {
+    margin-left: 52px;
+    width: 70%;
+
+}
+
+input[type=submit]:hover {
+    background-color: var(--accent);
+    color: var(--primarycolor);
+}
+
+input[type=submit]{
+    margin-top: 30px;
+    margin-bottom: 3px;
+}
+/*End of card input and form*/
+
+/*Signup page*/
+
+.si{ 
+    width: 100vw;
+    height: 100vh;
+}
+
+.card-s{
+    position: absolute;
+    z-index: 3;
+    width: 600px;
+    height: fit-content;
+    overflow-y: auto;
+    border: none;
+    top: 120px;
+    padding: 40px 100px;
+    bottom: 50px;
+    right: 100px;
+    margin: auto;
+}
+
+.big-text{
+    position: fixed;
+    font-size: 170px;
+    font-weight: 800;
+    width: 400px;
+    text-align: right;
+    color: var(--primarycolor);
+    line-height: 170px;
+    top: 5px;
+    left: 230px;
+    font-family: 'Lato';
+}
+
+.si .webname{
+    position: fixed;
+    bottom: 10px;
+    left: 30px;
+    color: var(--primarycolor);
+}
+
+.card-l{
+    position: absolute;
+    padding: 20px;
+    z-index: 3;
+    width: 600px;
+    height: fit-content;
+    overflow-y: auto;
+    border: none;
+    top: 100px;
+    padding: 40px 100px;
+    bottom: 50px;
+    right: 100px;
+    margin: auto;
+}
+
+.alert{
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: red;
+}
+
+strong
+{
+    color: red;
+}
+
+form h5{
+    margin-left: 10px;
+}
+
+.success
+{
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 20px;
+    color: green;
+}
+
+form i
+{
+    margin-left: -30px;
+    cursor: pointer;
+    color: var(--sec-light);
+}
+
+.eye-problem
+{
+
+    z-index: 9999;
+	position: absolute;
+	right: 135px;
+    margin-top: 5px;;
+}
+/*end of singup page*/
