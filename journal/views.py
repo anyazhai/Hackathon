@@ -3,7 +3,6 @@ import json
 import io
 
 import requests
-from reportlab.pdfgen import canvas
 from django.http import FileResponse, JsonResponse
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -18,7 +17,7 @@ from authentication.models import Profile
 from journal.encryption import encrypt, decrypt
 from journal.forms import EntrySearchForm
 from journal.models import Entry
-from analysis.models import EmotionsStat
+from analysis.models import EmotionsStat, Incentive
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
@@ -95,6 +94,7 @@ def post_page_view(request, id):
 @login_required
 def all_entries_page_view(request, star=None):
     entry_search_form = EntrySearchForm()
+    incentive_model = Incentive.objects.get(user=request.user)
     if cache.get(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY):
         entries = cache.get(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY)
     else:
@@ -112,6 +112,18 @@ def all_entries_page_view(request, star=None):
         profile_model = Profile.objects.get(user=request.user)
         cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
     results = None
+    if entries.count() > 0 and entries.count() < 2:
+        incentive_model.diarist1 = True
+        incentive_model.save()
+    elif entries.count() > 1 and entries.count() < 8:
+        incentive_model.diarist2 = True
+        incentive_model.save()
+    elif entries.count() > 7 and entries.count() < 15:
+        incentive_model.diarist3 = True
+        incentive_model.save()
+    elif entries.count() > 14 and entries.count() < 30:
+        incentive_model.diarist4 = True
+        incentive_model.save()
     if request.POST.get('stars') is not None and (request.method == 'POST'):
         cache.delete(constants.ALL_ENTRIES_STARRED_CACHE_KEY)
         entry = Entry.objects.get(id=request.POST.get('id'))

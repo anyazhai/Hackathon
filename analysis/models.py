@@ -43,19 +43,19 @@ class RegularityStat(models.Model):
 class Incentive(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    registrar = models.BooleanField(default=False)
-    diarist1 = models.BooleanField(default=False)
-    diarist2 = models.BooleanField(default=False)
-    diarist3 = models.BooleanField(default=False)
-    diarist4 = models.BooleanField(default=False)
-    storyteller1 = models.BooleanField(default=False)
-    storyteller2 = models.BooleanField(default=False)
-    logger1 = models.BooleanField(default=False)
-    logger2 = models.BooleanField(default=False)
-    logger3 = models.BooleanField(default=False)
-    logger4 = models.BooleanField(default=False)
-    logger5 = models.BooleanField(default=False)
-    muse1 = models.BooleanField(default=False)
+    registrar = models.BooleanField(default=False) #
+    diarist1 = models.BooleanField(default=False) #
+    diarist2 = models.BooleanField(default=False) #
+    diarist3 = models.BooleanField(default=False) #
+    diarist4 = models.BooleanField(default=False) #
+    storyteller1 = models.BooleanField(default=False) #
+    storyteller2 = models.BooleanField(default=False) #
+    logger1 = models.BooleanField(default=False) #
+    logger2 = models.BooleanField(default=False) #
+    logger3 = models.BooleanField(default=False) #
+    logger4 = models.BooleanField(default=False) #
+    logger5 = models.BooleanField(default=False) #
+    muse1 = models.BooleanField(default=False) 
     muse2 = models.BooleanField(default=False)
     muse3 = models.BooleanField(default=False)
     muse4 = models.BooleanField(default=False)
