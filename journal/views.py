@@ -11,7 +11,6 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
-from django.db.models import Sum
 
 import constants
 from authentication.models import Profile
@@ -157,17 +156,6 @@ def zen_page_view(request):
         zen_model.save()
         return HttpResponse(json.dumps(1), content_type='application/json')
     return render(request, 'journal/zen.html')
-
-
-@login_required
-def pdf_convert(request, text, filename):
-    buffer = io.BytesIO()
-    p = canvas.Canvas(buffer)
-    p.drawString(100, 100, text)
-    p.showPage()
-    p.save()
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename=filename)
 
 
 @login_required

@@ -7,6 +7,14 @@ Eudaimonia | User Statistics
 
 {% block body %}
 <body>
+    <h1>Suggestions Based on Personality:</h1>
+
+    <ul>
+        {% for result in final_result %}
+        <li>{{ result }}</li>
+        {% endfor %}
+    </ul>
+    
     <h1>Suggestions Based on Hobbies:</h1>
     {% for hob in hobby %}
     
@@ -51,5 +59,16 @@ Eudaimonia | User Statistics
         {% endif %}
 
     {% endfor %}
+
+    <h1>Movie Recommendations</h1>
+    {% for film in response.films %}
+        {{ film }}
+        <br />
+    {% endfor %}
+    {% for overview in response.overviews %}
+        {{ overview }}
+        <br />
+    {% endfor %}
+
 </body>
 {% endblock %}
