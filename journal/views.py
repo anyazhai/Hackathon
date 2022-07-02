@@ -25,7 +25,8 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 @login_required
 def journal_page_view(request):
     profile_model = Profile.objects.get(user=request.user)
-    return render(request, 'journal/journal.html', {'profile': profile_model})
+    entry_model = Entry.objects.filter(user=request.user).first()
+    return render(request, 'journal/journal.html', {'profile': profile_model, 'entry_model': entry_model})
 
 
 @login_required

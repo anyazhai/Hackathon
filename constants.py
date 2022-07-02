@@ -95,3 +95,12 @@ MUSIC_GENRES = (
     (REGGAE, 'Reggae'),
     (SOUL, 'Soul'),
 )
+QUOTES = (
+    'People who wonder if the glass is half empty or full miss the point. The glass is refillable.',
+    'Smart people learn from everything and everyone, average people from their experiences, stupid people already have all the answers.',
+    'We need to accept that we won\'t always make the right decisions, that we\'ll screw up royally sometimes―understanding that failure is not the opposite of success, it\'s part of success.',
+    'Very often, a change of self is needed more than a change of scene.',
+    'Twenty years from now you\'ll be more disappointed by the things you did not do than the ones you did',
+    'Take criticism seriously, but not personally. If there is truth or merit in the criticism, try to learn from it. Otherwise, let it roll right off you.',
+    '',
+)
