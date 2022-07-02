@@ -551,7 +551,7 @@ function normalizeColor(hexCode) {
         var alertflag;
         var timedMessage = document.querySelector(".timedMessage")
         function setTime(time){
-            timedMessage.innerHTML = "placeholder text(You cannot pause the timer yet)" //text when the user first enters the zen mode
+            timedMessage.innerHTML = "You're doing great! Keep up with the focus..." //text when the user first enters the zen mode
             c = time;
             total = c;
             alertflag = 0;
@@ -578,7 +578,7 @@ function normalizeColor(hexCode) {
                         
                         breakcd.innerHTML = ` Break Countdown: ${minute}m ${second}s`
                         if (breakPeriod == 0) { 
-                            timedMessage.innerHTML = "It's time to get back to work"
+                            timedMessage.innerHTML = "It's time to get back to work now..."
                             clearInterval(interval);
                         
                         }
@@ -629,24 +629,24 @@ function normalizeColor(hexCode) {
                     
                     countdownEl.innerHTML = `${hours}hr ${minutes}m ${seconds}s`
                     if (c == 0) { 
-                        timedMessage.innerHTML = "You were able to stay focused for the set period"
+                        timedMessage.innerHTML = "You were able to stay focused for the set period. Great work!"
                         passTime();
                         clearInterval(interval);
                     }
                     if(c < (total - 3600) && flag==0){
-                        timedMessage.innerHTML = "You might want to consider taking a break a break now"
+                        timedMessage.innerHTML = "You might want to consider taking a break now..."
                         pauseBut.disabled = false
                     }
                     else if(c < (total - 6300) && flag==1){
-                        timedMessage.innerHTML = "You might want to consider taking a break a break now"
+                        timedMessage.innerHTML = "You might want to consider taking a break now..."
                         pauseBut.disabled = false
                     }
                     else if(c < (total - 8100) && flag==2){
-                        timedMessage.innerHTML = "You might want to consider taking a break a break now"
+                        timedMessage.innerHTML = "You might want to consider taking a break now..."
                         pauseBut.disabled = false
                     }
                     else if(c < (total - 9900) && flag==3){
-                        timedMessage.innerHTML = "You might want to consider taking a break a break now"
+                        timedMessage.innerHTML = "You might want to consider taking a break now..."
                         pauseBut.disabled = false
                     }
                 }
@@ -673,7 +673,7 @@ function normalizeColor(hexCode) {
         function closeFullscreen() {
             if (document.exitFullscreen) {
                 if (c != 0 && alertflag == 0){
-                    timedMessage.innerHTML = "You will lose the total time spent in Zen mode from being considered if you exit now. Click on exit again if you want to continue"
+                    timedMessage.innerHTML = "You will lose the total time spent in Zen mode from being considered if you exit now. Click on exit again if you want to continue."
                     alertflag++;
                 } else{
                     document.exitFullscreen();
