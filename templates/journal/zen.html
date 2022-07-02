@@ -27,7 +27,7 @@ Eudaimonia | Zen Mode
             </div>
             
             <div>
-                <select id="select" name="timeSelect" id="timeSelect" !(onchange)="setTime(this.value);" onchange="setTime(this.value);">
+                <select id="select" name="timeSelect" id="timeSelect" onchange="setTime(this.value);">
                     <option disabled selected="selected" value="0">Choose the time</option>
                     <option value="1800">30 minutes</option>
                     <option value="3600">1 hour</option>
@@ -54,26 +54,7 @@ Eudaimonia | Zen Mode
             <button id="stop" onclick="closeFullscreen();">Stop and Exit</button>
             <button id="resume" onclick="unpauseTimer();">Resume</button>
             <button id="pause" onclick="pauseTimer();">Pause</button>
-            <!-- <div id="player" class="just-stay">
-                <div id="container">   
-                  <div id="controls">
-                    <div class="lecteur">
-                      <audio id="music" class="fc-media">
-                        <source src="https://embeddable-music-player.yizack.com/music/just-stay.mp3" type="audio/mpeg">
-                      </audio>
-                    </div>
-                  </div>
-                  <div id="cover">
-                    <div id="box-1">
-                      <div id="box-2">
-                        <div id="box-3">
-                          <div id="image" style="background: url('https://embeddable-music-player.yizack.com/images/just-stay.jpg');"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+            <audio id="audio" loop src="https://cdn.pixabay.com/download/audio/2022/03/11/audio_09bd9cbb9a.mp3?filename=longing-for-eternity-worship-poured-out-49950.mp3"></audio>
             <canvas id="gradient-canvas">
             </canvas>
 
@@ -220,9 +201,11 @@ Eudaimonia | Zen Mode
 
         
         // zen mode activate and deactivate
+        var audio = document.querySelector("#audio");
         var elem = document.querySelector(".window");
         function openFullscreen() {
         if (elem.requestFullscreen) {
+            audio.play(); 
             elem.classList.add('active')
             elem.requestFullscreen();
             startclock()
@@ -242,6 +225,7 @@ Eudaimonia | Zen Mode
                     alertflag++;
                 } else {
                     document.exitFullscreen();
+                    audio.pause();
                     location.reload(true)
                     clearInterval(intervalReference);
                     elem.classList.remove('active')
