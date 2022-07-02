@@ -3,6 +3,7 @@ from django.db.models import Sum
 
 from authentication.models import Profile
 from analysis.models import EmotionsStat, RegularityStat, Incentive
+from journal.models import Zen
 from analysis.forms import QuestionnaireForm
 
 
@@ -14,6 +15,7 @@ def stats_page_view(request):
     total_entries = EmotionsStat.objects.filter(user=request.user).count()
     regularity_model = RegularityStat.objects.filter(user=request.user)
     regularity_model_x, regularity_model_y = list(), list()
+    zen_model = Zen.objects.get(user=request.user)
     for x in regularity_model.iterator():
         regularity_model_x.append(x.date.day)
     for y in regularity_model.iterator():
@@ -47,7 +49,7 @@ def stats_page_view(request):
         emotion_data_monthly['Sad'] = float(emotion_queryset_monthly.aggregate(Sum('sad'))['sad__sum'])
         emotion_data_monthly['Surprise'] = float(emotion_queryset_monthly.aggregate(Sum('surprise'))['surprise__sum'])
         emotion_data_monthly['Fear'] = float(emotion_queryset_monthly.aggregate(Sum('fear'))['fear__sum'])
-    context = {'emotion_data': emotion_data, 'emotion_data_weekly': emotion_data_weekly, 'emotion_data_monthly': emotion_data_monthly, 'emotion_data_last': emotion_data_last, 'regularity_model_len': regularity_model_len, 'regularity_model': regularity_model, 'regularity_model_x': regularity_model_x, 'regularity_model_y': regularity_model_y}
+    context = {'zen_model': zen_model, 'emotion_data': emotion_data, 'emotion_data_weekly': emotion_data_weekly, 'emotion_data_monthly': emotion_data_monthly, 'emotion_data_last': emotion_data_last, 'regularity_model_len': regularity_model_len, 'regularity_model': regularity_model, 'regularity_model_x': regularity_model_x, 'regularity_model_y': regularity_model_y}
     return render(request, 'analysis/stats.html', context=context)
 
 
@@ -114,4 +116,4 @@ def incentives_page_view(request):
 
 
 def suggestions_page_view(request):
-    pass
+    return render(request, 'analysis/suggestions.html')

@@ -39,8 +39,9 @@ Sufficient data unavailable.
 <canvas id="myBar" style="width:100%;max-width:600px"></canvas>
 
 <p>Total number of days active: {{ regularity_model_len }}</p>
+<p>Hours spent in the Zen Mode: {{ zen_model.time }}</p>
 
-<a href="{% link 'suggestions' %}">Suggestions</a>
+<a href="{% url 'suggestions' %}">Suggestions</a>
 
 <script>
   var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
@@ -159,8 +160,10 @@ Sufficient data unavailable.
 </script>
 
 <script>
-var xValues = {{ regularity_model_x|safe }};
-var yValues = {{ regularity_model_y|safe }};
+//var xValues = {{ regularity_model_x|safe }};
+//var yValues = {{ regularity_model_y|safe }};
+var xValues = [2];
+var yValues = [4.5]
 new Chart("myBar", {
   type: "line",
   data: {
@@ -180,7 +183,7 @@ new Chart("myBar", {
     },
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 0, max:100}}],
+      yAxes: [{ticks: {min: 0, max:10}}],
     }
   }
 });

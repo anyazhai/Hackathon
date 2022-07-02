@@ -120,11 +120,22 @@ Eudaimonia | Zen Mode
         }
 
         //to pass the spent time in Zen mode to add to the total hours or something
-        function passTime(){
-            var seconds = c % 60; // Seconds that cannot be written in minutes
-            var minutes = seconds % 60; // Minutes that cannot be written in hours
-            var hours = (seconds - minutes) / 60;
-        }
+        // function passTime(){
+        //     //var time = c / 3600; // Seconds that cannot be written in minutes
+        //     var time = 100;
+        //     $("#stop").click(function (event) {
+        //         $.ajax({
+        //         type: "POST",
+        //         url: "",
+        //         data: { 'csrfmiddlewaretoken': "{{  csrf_token  }}", 'time': time},
+        //         success: function (response) {
+        //             if (response == 1) {
+        //                 window.location = "{% url 'zen' %}";
+        //             }
+        //         },
+        //         });
+        //     })
+        // }
         
         const countdownEl = document.getElementById('countdown');
        
@@ -142,10 +153,13 @@ Eudaimonia | Zen Mode
                     var minutes = secondsInMinutes % 60; // Minutes that cannot be written in hours
                     var hours = (secondsInMinutes - minutes) / 60;
                     
+                    
+
                     countdownEl.innerHTML = `${hours}:${minutes}:${seconds}`
                     if (c == 0) { 
                         timedMessage.innerHTML = "You were able to stay focused for the set period. Great work!"
-                        passTime();
+                        // passTime();
+                        //var time = c / 3600; // Seconds that cannot be written in minutes
                         clearInterval(interval);
                     }
                     if(c < (total - 3600) && flag==0){
@@ -187,10 +201,10 @@ Eudaimonia | Zen Mode
         
         function closeFullscreen() {
             if (document.exitFullscreen) {
-                if (c != 0 && alertflag == 0){
+                if(c != 0 && alertflag == 0){
                     timedMessage.innerHTML = "You will lose the total time spent in Zen mode from being considered if you exit now. Click on exit again if you want to continue."
                     alertflag++;
-                } else{
+                } else {
                     document.exitFullscreen();
                     location.reload(true)
                     clearInterval(intervalReference);
@@ -198,8 +212,6 @@ Eudaimonia | Zen Mode
                 }
             } 
         }
-    
-
-    </script>        
+    </script>  
 </body>
 {% endblock %}
