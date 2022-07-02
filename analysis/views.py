@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Sum
 
 from authentication.models import Profile
-from analysis.models import EmotionsStat, RegularityStat
+from analysis.models import EmotionsStat, RegularityStat, Incentive
 from analysis.forms import QuestionnaireForm
 
 
@@ -53,6 +53,7 @@ def stats_page_view(request):
 
 def quiz_page_view(request):
     profile_model = Profile.objects.get(user=request.user)
+    incentive_model = Incentive.objects.get(user=request.user)
     question_form = QuestionnaireForm()
     if request.method == 'POST':
         question_form = QuestionnaireForm(request.POST)
@@ -100,10 +101,16 @@ def quiz_page_view(request):
                     P += 1
             personality = str('I' if IN > E else 'E') + str('S' if S > N else 'N') + str('T' if T > F else 'F') + str('J' if J > P else 'P')
             print(personality)
+            incentive_model.registrar = True
             profile_model.personality = personality
             profile_model.save()
+            incentive_model.save()
             return redirect('profile_edit')
-    return render(request, 'analysis/quiz.html', {'profile_model': profile_model, 'form': question_form})
+    return render(request, 'analysis/quiz.html', {'profile_model': profile_model, 'incentive_model': incentive_model, 'form': question_form})
+
+
+def incentives_page_view(request):
+    return render(request, 'analysis/incentives.html')
 
 
 def suggestions_page_view(request):
