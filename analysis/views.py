@@ -116,4 +116,35 @@ def incentives_page_view(request):
 
 
 def suggestions_page_view(request):
-    return render(request, 'analysis/suggestions.html')
+    profile_model = Profile.objects.get(user=request.user).personality
+    emotion = EmotionsStat.objects.filter(user=request.user).first().emotion
+    generalized_suggestions = []
+    failure = False
+    if (not profile_model) or profile_model == '':
+        failure = True
+    if emotion == 'Happy':
+        if 'I' in profile_model:
+            generalized_suggestions.append('The immediate thing that you might want to avoid is following the urge to \
+                be in extroverted environments just because others are doing so as well. You know what makes you comfortable.\
+                Better stick to that.')
+            generalized_suggestions.append('A lot of grief comes from unresolved issues that you might be putting underneath \
+                some cover to avoid feeling them. Either encounter those issues head on, resolve them or try to let go.')
+            generalized_suggestions.append('If you\'re hungry, enjoy a solitary meal and watch your favourite show or try \
+                watching certain movies.')
+            generalized_suggestions.append('Spend time with someone who is very close to you. Avoid people around whom you do \
+                not want to be.')
+            generalized_suggestions.append('When something bad happens, almost everything seems to fall apart. You start \
+                disliking yourself for more reasons than you actually were upset about in the first place. At such moments, shut \
+                your mind off and do not think.')
+        elif 'E' in profile_model:
+            generalized_suggestions.append('Unless you are extremely upset or angry, you may not want to stay alone at such \
+                times. Get together with certain close friends or a group to talk it out until it makes you feel good.')
+            generalized_suggestions.append('You might want to be around people who approve or value your sense of independence \
+                and respect it.')
+            generalized_suggestions.append('Catch up with old friends.')
+            generalized_suggestions.append('Go to a place that holds good memories with the same people with whom we had been there \
+                before.')
+
+    elif emotion == 'Sad':
+        pass
+    return render(request, 'analysis/suggestions.html', {'profile_model': profile_model, 'failure': failure})
