@@ -106,5 +106,9 @@ def quiz_page_view(request):
     return render(request, 'analysis/quiz.html', {'profile_model': profile_model, 'form': question_form})
 
 
+def incentives_page_view(request):
+    return render(request, 'analysis/incentives.html')
+
+
 def suggestions_page_view(request):
     pass
