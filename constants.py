@@ -102,5 +102,9 @@ QUOTES = (
     'Very often, a change of self is needed more than a change of scene.',
     'Twenty years from now you\'ll be more disappointed by the things you did not do than the ones you did',
     'Take criticism seriously, but not personally. If there is truth or merit in the criticism, try to learn from it. Otherwise, let it roll right off you.',
+    'If you think you\'re too small to make a difference, try sleeping with a mosquito.',
+    'Remember, you\'ve been criticizing yourself for years and it hasn\'t worked. Try approving of yourself and see what happens.',
+    'When you find no solution to a problem, it is probably not one to be solved but rather a truth to be accepted.',
     '',
+    ''
 )
