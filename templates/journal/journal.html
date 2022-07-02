@@ -26,21 +26,20 @@ Eudaimonia | Your Journal
         <div id="jname">{{ user.username }}'s  journal</div>
     </div>
 
-    <script src="path/to/particles.min.js"></script>
-
     <div class="section">
         <div class="row">
             <div class="column">
                 <div class="dummy"></div>
                 <div class="stickynote" >
-                    <h2>{{ entry_model.title }}</h2>
-                    <p>{{ entry_model.entry }}</p>
+                    <p>Journal created on: {{ profile.join_date }}</p>
+                    <p>Total entries written: {{ count }}</p>
+                    <p>Last entry written: {{ entry_model.date }}</p>
+                    <p>Last entry's title: {{ entry_model.title }}</p>
                 </div>
             </div>
             <div class="column">
                 <div  class="stickynote">
-                    <img src="../../static/images/pastelbg.jpg" alt="">
-                    <h2></h2>
+                    <h2>{{ quotes }}</h2>
                 </div>
                 <div class="stickynote">
                     <h2>Welcome to Journaling!</h2>

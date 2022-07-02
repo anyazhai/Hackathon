@@ -117,34 +117,127 @@ def incentives_page_view(request):
 
 def suggestions_page_view(request):
     profile_model = Profile.objects.get(user=request.user).personality
+    hobby = [obj[0] for obj in Profile.objects.get(user=request.user).hobby.values_list('field')]
+    print(hobby)
     emotion = EmotionsStat.objects.filter(user=request.user).first().emotion
-    generalized_suggestions = []
+    generalized_suggestions1, generalized_suggestions2, generalized_suggestions3, generalized_suggestions4 = [], [], [], []
     failure = False
     if (not profile_model) or profile_model == '':
         failure = True
-    if emotion == 'Happy':
+    if emotion == 'Sad':
         if 'I' in profile_model:
-            generalized_suggestions.append('The immediate thing that you might want to avoid is following the urge to \
+            generalized_suggestions1.append('The immediate thing that you might want to avoid is following the urge to \
                 be in extroverted environments just because others are doing so as well. You know what makes you comfortable.\
                 Better stick to that.')
-            generalized_suggestions.append('A lot of grief comes from unresolved issues that you might be putting underneath \
+            generalized_suggestions1.append('A lot of grief comes from unresolved issues that you might be putting underneath \
                 some cover to avoid feeling them. Either encounter those issues head on, resolve them or try to let go.')
-            generalized_suggestions.append('If you\'re hungry, enjoy a solitary meal and watch your favourite show or try \
+            generalized_suggestions1.append('If you\'re hungry, enjoy a solitary meal and watch your favourite show or try \
                 watching certain movies.')
-            generalized_suggestions.append('Spend time with someone who is very close to you. Avoid people around whom you do \
+            generalized_suggestions1.append('Spend time with someone who is very close to you. Avoid people around whom you do \
                 not want to be.')
-            generalized_suggestions.append('When something bad happens, almost everything seems to fall apart. You start \
+            generalized_suggestions1.append('When something bad happens, almost everything seems to fall apart. You start \
                 disliking yourself for more reasons than you actually were upset about in the first place. At such moments, shut \
                 your mind off and do not think.')
         elif 'E' in profile_model:
-            generalized_suggestions.append('Unless you are extremely upset or angry, you may not want to stay alone at such \
+            generalized_suggestions1.append('Unless you are extremely upset or angry, you may not want to stay alone at such \
                 times. Get together with certain close friends or a group to talk it out until it makes you feel good.')
-            generalized_suggestions.append('You might want to be around people who approve or value your sense of independence \
+            generalized_suggestions1.append('You might want to be around people who approve or value your sense of independence \
                 and respect it.')
-            generalized_suggestions.append('Catch up with old friends.')
-            generalized_suggestions.append('Go to a place that holds good memories with the same people with whom we had been there \
+            generalized_suggestions1.append('Catch up with old friends.')
+            generalized_suggestions1.append('Go to a place that holds good memories with the same people with whom you had been there \
                 before.')
-
-    elif emotion == 'Sad':
-        pass
-    return render(request, 'analysis/suggestions.html', {'profile_model': profile_model, 'failure': failure})
+            generalized_suggestions1.append('Do something that you\'re very good or familiar with.')
+        if 'S' in profile_model:
+            generalized_suggestions2.append('If there is an instance in which you\'re sensing disapproval from people around you, \
+                talk to them to understand what is happening.')
+            generalized_suggestions2.append('You might need to cut loose company that have grown undesirable and insensible towards you.')
+            generalized_suggestions2.append('You might want to consider not to rethink things when they have a pretty clear outcome.')
+        elif 'N' in profile_model:
+            generalized_suggestions2.append('Consider the worst case scenario for the actions that you are taking and weigh the pros and cons.')
+            generalized_suggestions2.append('In case your instincts fail you, it is worth knowing that it is okay to make mistakes. \
+                You\'re the only person knowing the best about yourself and so you should never stop trusting yourself.')
+            generalized_suggestions2.append('If you\'re feeling conflicted about something, it may be better to trust your gut-feeling \
+                because if you don\'t, it might result in disappointment because you didn\'t follow what you wanted to.')
+        if 'T' in profile_model:
+            generalized_suggestions3.append('At times you may be overthinking things. Quieten down your mind and don\'t think \
+                about what might take place. Focus on your present more.')
+            generalized_suggestions3.append('Whatever you are thinking, try writing about it. It may make it easier for you \
+                to analyse things.')
+            generalized_suggestions3.append('Whatever you\'re thinking, talk about it to your close ones.')
+        elif 'F' in profile_model:
+            generalized_suggestions3.append('Instead of keeping your feelings to yourself, try expressing it.')
+            generalized_suggestions3.append('Whatever you are thinking may be just an exaggeration of how things are at present. \
+                Try to not let feelings get the better of your rationality.')
+            generalized_suggestions3.append('Whatever you are feeling, try writing about it. It may make it easier for you \
+                to deal with it.')
+        if 'J' in profile_model:
+            generalized_suggestions4.append('You should remind yourself that whatever you are facing would be something that \
+                you can easily move past by having faith in yourself and your judgements.')
+            generalized_suggestions4.append('You might want to have an open mind about things in case the people closest \
+                to you have second thoughts about your decisions.')
+            generalized_suggestions4.append('It might have been that your judgements were probably correct. It was just a certain \
+                circumstance that made things unfavourable.')
+        elif 'P' in profile_model:
+            generalized_suggestions4.append('A few minor setbacks shouldn\'t affect your accuracy of perception.')
+            generalized_suggestions4.append('Your ability to take decisions and percieve makes you unique and therefore should \
+                not discourage you to do the same.')
+            generalized_suggestions4.append('It is your mistakes that would make you better and sharpen your perception.')
+    elif emotion == 'Happy':
+        if 'I' in profile_model:
+            generalized_suggestions1.append('The immediate thing that you might want to avoid is following the urge to \
+                be in extroverted environments just because others are doing so as well. You know what makes you comfortable.\
+                Better stick to that.')
+            generalized_suggestions1.append('A lot of grief comes from unresolved issues that you might be putting underneath \
+                some cover to avoid feeling them. Either encounter those issues head on, resolve them or try to let go.')
+            generalized_suggestions1.append('If you\'re hungry, enjoy a solitary meal and watch your favourite show or try \
+                watching certain movies.')
+            generalized_suggestions1.append('Spend time with someone who is very close to you. Avoid people around whom you do \
+                not want to be.')
+            generalized_suggestions1.append('When something bad happens, almost everything seems to fall apart. You start \
+                disliking yourself for more reasons than you actually were upset about in the first place. At such moments, shut \
+                your mind off and do not think.')
+        elif 'E' in profile_model:
+            generalized_suggestions1.append('Unless you are extremely upset or angry, you may not want to stay alone at such \
+                times. Get together with certain close friends or a group to talk it out until it makes you feel good.')
+            generalized_suggestions1.append('You might want to be around people who approve or value your sense of independence \
+                and respect it.')
+            generalized_suggestions1.append('Catch up with old friends.')
+            generalized_suggestions1.append('Go to a place that holds good memories with the same people with whom you had been there \
+                before.')
+            generalized_suggestions1.append('Do something that you\'re very good or familiar with.')
+        if 'S' in profile_model:
+            generalized_suggestions2.append('If there is an instance in which you\'re sensing disapproval from people around you, \
+                talk to them to understand what is happening.')
+            generalized_suggestions2.append('You might need to cut loose company that have grown undesirable and insensible towards you.')
+            generalized_suggestions2.append('You might want to consider not to rethink things when they have a pretty clear outcome.')
+        elif 'N' in profile_model:
+            generalized_suggestions2.append('Consider the worst case scenario for the actions that you are taking and weigh the pros and cons.')
+            generalized_suggestions2.append('In case your instincts fail you, it is worth knowing that it is okay to make mistakes. \
+                You\'re the only person knowing the best about yourself and so you should never stop trusting yourself.')
+            generalized_suggestions2.append('If you\'re feeling conflicted about something, it may be better to trust your gut-feeling \
+                because if you don\'t, it might result in disappointment because you didn\'t follow what you wanted to.')
+        if 'T' in profile_model:
+            generalized_suggestions3.append('At times you may be overthinking things. Quieten down your mind and don\'t think \
+                about what might take place. Focus on your present more.')
+            generalized_suggestions3.append('Whatever you are thinking, try writing about it. It may make it easier for you \
+                to analyse things.')
+            generalized_suggestions3.append('Whatever you\'re thinking, talk about it to your close ones.')
+        elif 'F' in profile_model:
+            generalized_suggestions3.append('Instead of keeping your feelings to yourself, try expressing it.')
+            generalized_suggestions3.append('Whatever you are thinking may be just an exaggeration of how things are at present. \
+                Try to not let feelings get the better of your rationality.')
+            generalized_suggestions3.append('Whatever you are feeling, try writing about it. It may make it easier for you \
+                to deal with it.')
+        if 'J' in profile_model:
+            generalized_suggestions4.append('You should remind yourself that whatever you are facing would be something that \
+                you can easily move past by having faith in yourself and your judgements.')
+            generalized_suggestions4.append('You might want to have an open mind about things in case the people closest \
+                to you have second thoughts about your decisions.')
+            generalized_suggestions4.append('It might have been that your judgements were probably correct. It was just a certain \
+                circumstance that made things unfavourable.')
+        elif 'P' in profile_model:
+            generalized_suggestions4.append('A few minor setback shouldn\'t affect your accuracy of perception.')
+            generalized_suggestions4.append('Your ability to take decisions and percieve makes you unique and therefore should \
+                not discourage you to do the same.')
+            generalized_suggestions4.append('It is your mistakes that would make you better and sharpen your perception.')
+    return render(request, 'analysis/suggestions.html', {'profile_model': profile_model, 'failure': failure, 'hobby': hobby})

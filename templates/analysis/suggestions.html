@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | User Statistics
+{% endblock %}
+
+{% block body %}
+<body>
+    <h1>Suggestions Based on Hobbies:</h1>
+    {% for hob in hobby %}
+    
+        {% if hob == 'Handicrafts' %}
+        <h2>Handicrafts</h2>
+        <ul>
+            <li><a href="https://www.handicraft.com/">Handicrafts</a> is a </li>
+        </ul>
+        {% endif %}
+
+        {% if hob == 'Adventure' %}
+        {% endif %}
+
+        {% if hob == 'Gardening' %}
+        {% endif %}
+
+        {% if hob == 'Nerding' %}
+        {% endif %}
+
+        {% if hob == 'Videogames' %}
+        {% endif %}
+
+        {% if hob == 'Music' %}
+        {% endif %}
+
+        {% if hob == 'Movies' %}
+        {% endif %}
+
+        {% if hob == 'Dancing' %}
+        {% endif %}
+
+        {% if hob == 'Cooking' %}
+        {% endif %}
+
+        {% if hob == 'Sports' %}
+        {% endif %}
+
+        {% if hob == 'Writing' %}
+        {% endif %}
+
+        {% if hob == 'Reading' %}
+        {% endif %}
+
+    {% endfor %}
+</body>
+{% endblock %}

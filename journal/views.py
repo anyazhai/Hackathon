@@ -1,6 +1,7 @@
 import hashlib
 import json
 import io
+import random
 
 import requests
 from django.http import FileResponse, JsonResponse
@@ -26,7 +27,8 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 def journal_page_view(request):
     profile_model = Profile.objects.get(user=request.user)
     entry_model = Entry.objects.filter(user=request.user).first()
-    return render(request, 'journal/journal.html', {'profile': profile_model, 'entry_model': entry_model})
+    count = Entry.objects.filter(user=request.user).count()
+    return render(request, 'journal/journal.html', {'profile': profile_model, 'entry_model': entry_model, 'quotes': constants.QUOTES[random.randint(0, 9)], 'count': count})
 
 
 @login_required
