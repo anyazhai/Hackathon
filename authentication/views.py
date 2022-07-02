@@ -163,7 +163,6 @@ def password_change_page_view(request):
 def logout_page_view(request):
     cache.delete(constants.CURRENT_USER_CACHE_KEY)
     if request.POST.get('time_spent') is not None and (request.method == 'POST'):
-        print('ass')
         time_spent = decimal.Decimal(request.POST.get('time_spent'))
         model = RegularityStat.objects.filter(user=request.user).first()
         model.time_spent += time_spent

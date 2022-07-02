@@ -16,7 +16,7 @@ import constants
 from authentication.models import Profile
 from journal.encryption import encrypt, decrypt
 from journal.forms import EntrySearchForm
-from journal.models import Entry
+from journal.models import Entry, Zen
 from analysis.models import EmotionsStat, Incentive
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
@@ -147,6 +147,12 @@ def all_entries_page_view(request, star=None):
 
 @login_required
 def zen_page_view(request):
+    if request.POST.get('hours') is not None and (request.method == 'POST'):
+        print('zen')
+        zen_model = Zen.objects.get(user=request.user)
+        zen_model.time += request.POST.get('time')
+        zen_model.save()
+        return HttpResponse(json.dumps(1), content_type='application/json')
     return render(request, 'journal/zen.html')
 
 
@@ -193,7 +199,6 @@ def autocomplete(request):
 
 def journal_navbar(request):
     display = True if str(request.user) != 'AnonymousUser' else False
-    # display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path) or ('zen/' in request.path)
     recaptcha_key = None
     if 'signup/' in request.path:
         recaptcha_key = settings.RECATCHA_PUBLIC_KEY
