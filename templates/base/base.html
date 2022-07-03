@@ -42,6 +42,8 @@
         <hr />
         <a {% block nav_zen %}{% endblock %} href="{% url 'zen' %}" id="Zen mode"><i class="ri ri-focus-line"></i>Zen Mode</a>
         <a {% block nav_incentives %}{% endblock %} href="{% url 'incentives' %}" id="badges"><i class="ri ri-medal-line"></i>Badges</a>
+        <a href="{% url 'suggestions' %}" ><i class="ri ri-medal-line"></i>Suggestions</a>
+        <a href="{% url 'story' %}"><i class="ri ri-medal-line"></i>Personal Stories</a>
     </div>
 
     <label class="switch">
