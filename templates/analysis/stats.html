@@ -170,8 +170,8 @@ Sufficient data unavailable.
 <script>
 //var xValues = {{ regularity_model_x|safe }};
 //var yValues = {{ regularity_model_y|safe }};
-var xValues = [2];
-var yValues = [4.5]
+var xValues = [2, 3];
+var yValues = [10.5, 9]
 new Chart("myBar", {
   type: "line",
   data: {
@@ -191,7 +191,7 @@ new Chart("myBar", {
     },
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 0, max:10}}],
+      yAxes: [{ticks: {min: 0, max:15}}],
     }
   }
 });

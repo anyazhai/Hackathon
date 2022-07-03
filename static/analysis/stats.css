@@ -105,24 +105,17 @@ h1{
 
 
 
-#diarist img, 
-#muse img, 
-#register img,
-#logger img,
-#storyteller img{
+#badges img{
     position: relative;
     width: 230px;
     height: auto;
 }
 
-#diarist span, 
-#muse span, 
-#logger span,
-#register span,
-#storyteller span{
+#badges span{
     padding: 50px;
     position: relative;
     height: 800px;
+    display: inline;
 }
 
 
