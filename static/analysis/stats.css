@@ -64,6 +64,9 @@ h1{
     background-color: #301dad2e;
     color: var(--accent);
 }
+
+
+/*Incentives*/
 #diarist,
 #muse,
 #logger,
@@ -132,5 +135,42 @@ h1{
     margin-top: -100px;
 }
 
+/*End of Incentives*/
+
+
+
+
+/*Suggestions*/
+#suggestions_page{
+    margin: 120px;
+}
+
+#suggestions_page ul{
+    margin-top: 30px;
+}
+
+#suggestions_page ul li{
+    padding-bottom: 10px;
+}
+
+.float-left{
+    float: left;
+    height: 200px;
+    width: 17%;
+}
+
+.float-left .film{
+    height: 70px;
+}
+
+.float-right{
+    float: right;
+    height: 200px;
+    width: 80%;
+}
+
+.float-right .overview{
+    min-height: 70px;
+}
 
 

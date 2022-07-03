@@ -6,69 +6,84 @@ Eudaimonia | User Statistics
 {% endblock %}
 
 {% block body %}
-<body>
-    <h1>Suggestions Based on Personality:</h1>
+<link rel="stylesheet" href="{% static 'analysis/stats.css' %}">
 
-    <ul>
-        {% for result in final_result %}
-        <li>{{ result }}</li>
-        {% endfor %}
-    </ul>
-    
-    <h1>Suggestions Based on Hobbies:</h1>
-    {% for hob in hobby %}
-    
-        {% if hob == 'Handicrafts' %}
-        <h2>Handicrafts</h2>
+<body >
+    <div id="suggestions_page">
+        <h1>Suggestions Based on Personality:</h1>
+
         <ul>
-            <li><a href="https://www.handicraft.com/">Handicrafts</a> is a </li>
+            {% for result in final_result %}
+            <li>{{ result }}</li>
+            {% endfor %}
         </ul>
-        {% endif %}
+        
+        <h1>Suggestions Based on Hobbies:</h1>
+        {% for hob in hobby %}
+        
+            {% if hob == 'Handicrafts' %}
+            <h2>Handicrafts</h2>
+            <ul>
+                <li><a href="https://www.handicraft.com/">Handicrafts</a> is a </li>
+            </ul>
+            {% endif %}
 
-        {% if hob == 'Adventure' %}
-        {% endif %}
+            {% if hob == 'Adventure' %}
+            {% endif %}
 
-        {% if hob == 'Gardening' %}
-        {% endif %}
+            {% if hob == 'Gardening' %}
+            {% endif %}
 
-        {% if hob == 'Nerding' %}
-        {% endif %}
+            {% if hob == 'Nerding' %}
+            {% endif %}
 
-        {% if hob == 'Videogames' %}
-        {% endif %}
+            {% if hob == 'Videogames' %}
+            {% endif %}
 
-        {% if hob == 'Music' %}
-        {% endif %}
+            {% if hob == 'Music' %}
+            {% endif %}
 
-        {% if hob == 'Movies' %}
-        {% endif %}
+            {% if hob == 'Movies' %}
+            {% endif %}
 
-        {% if hob == 'Dancing' %}
-        {% endif %}
+            {% if hob == 'Dancing' %}
+            {% endif %}
 
-        {% if hob == 'Cooking' %}
-        {% endif %}
+            {% if hob == 'Cooking' %}
+            {% endif %}
 
-        {% if hob == 'Sports' %}
-        {% endif %}
+            {% if hob == 'Sports' %}
+            {% endif %}
 
-        {% if hob == 'Writing' %}
-        {% endif %}
+            {% if hob == 'Writing' %}
+            {% endif %}
 
-        {% if hob == 'Reading' %}
-        {% endif %}
+            {% if hob == 'Reading' %}
+            {% endif %}
 
-    {% endfor %}
+        {% endfor %}
 
-    <h1>Movie Recommendations</h1>
-    {% for film in response.films %}
-        {{ film }}
-        <br />
-    {% endfor %}
-    {% for overview in response.overviews %}
-        {{ overview }}
-        <br />
-    {% endfor %}
+        
 
+        <h1>Music Recommendation</h1>
+        <p>Today's music recommendation is {{ track }} by {{ artist }}.</p>
+
+        <h1>Movie Recommendations</h1>
+        <div class="float-left">
+            {% for film in response.films %}
+                <div class="film"> {{ film }} </div>
+                <br />
+            {% endfor %}
+        </div>
+
+        <div class="float-right">
+            {% for overview in response.overviews %}
+                <div class="overview"> {{ overview }} </div>
+                <br />
+            {% endfor %}
+        </div>
+
+        
+</div>
 </body>
 {% endblock %}
