@@ -7,6 +7,10 @@ Eudaimonia | User Statistics
 
 {% block body %}
 <body>
-    
+    {% for entry in entry_model %}
+        <h1>{{ entry.title }}</h1>
+        By {{ entry.author }}
+        <p>{{ entry.body }}</p>
+    {% endfor %}
 </body>
 {% endblock %}

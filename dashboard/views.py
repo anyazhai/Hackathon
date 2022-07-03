@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 from authentication.models import Profile
-from dashboard.models import Post
+from dashboard.models import Post, Story
 from dashboard.forms import EntrySearchForm, PostForm
 from analysis.models import RegularityStat, Incentive
 
@@ -97,4 +97,5 @@ def my_share_page_view(request):
 
 @login_required
 def story_page_view(request):
-    return render(request, 'dashboard/story.html')
+    entry_model = Story.objects.all()
+    return render(request, 'dashboard/story.html', {'entry_model': entry_model})
