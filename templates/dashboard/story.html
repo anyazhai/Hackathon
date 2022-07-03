@@ -1,16 +1,44 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
+
+{% block style %}
+    <style>  
+        .contain{
+            margin: 100px;
+        }
+
+        .author{
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .titlePost{
+            margin-top: 70px;
+            font-size: 35px;
+        }
+        
+        .contentPost{
+            font-size: 18px;
+        }
+
+
+    </style>
+{% endblock %}
+
 {% block title %}
 Eudaimonia | User Statistics
 {% endblock %}
 
+
 {% block body %}
 <body>
-    {% for entry in entry_model %}
-        <h1>{{ entry.title }}</h1>
-        By {{ entry.author }}
-        <p>{{ entry.body }}</p>
-    {% endfor %}
+    <div class="contain">
+        {% for entry in entry_model %}
+            <h1 class= "titlePost">{{ entry.title }}</h1>
+            <h5 class="author">By: {{ entry.author }} </h5> 
+            <p class="contentPost">{{ entry.body }}</p>
+        {% endfor %}
+    </div>
 </body>
 {% endblock %}
