@@ -118,7 +118,8 @@ def quiz_page_view(request):
 
 
 def incentives_page_view(request):
-    return render(request, 'analysis/incentives.html')
+    incentives_model = Incentive.objects.get(user=request.user)
+    return render(request, 'analysis/incentives.html', {'incentives_model': incentives_model})
 
 
 def suggestions_page_view(request):
