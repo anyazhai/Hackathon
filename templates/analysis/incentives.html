@@ -14,6 +14,7 @@ Eudaimonia | Personality Quiz
 <link rel="stylesheet" href="{% static 'analysis/stats.css' %}">
 
 <body>
+    <div id="margin-container">
     <div id="badges">
         <h1>Collected Badges</h1>
         {% if incentives_model.diarist1 %}
@@ -113,7 +114,7 @@ Eudaimonia | Personality Quiz
         {% endif %}
 
         {% if incentives_model.registrar %}
-        <span>
+        <span id="register">
         <img src="{% static 'images/register.svg' %}" alt="">
             <div>Registrar I</div>
             <p>Have filled profile details.</p>
@@ -235,7 +236,7 @@ Eudaimonia | Personality Quiz
         {% endif %}
 
         {% if not incentives_model.registrar %}
-        <span>
+        <span id="register">
         <img src="{% static 'images/register.svg' %}" alt="">
             <div>Registrar I</div>
             <p>Have filled profile details.</p>
@@ -258,5 +259,6 @@ Eudaimonia | Personality Quiz
         </span>
         {% endif %}
     </div>
+</div>
 </body>
 {% endblock %}
