@@ -93,3 +93,8 @@ def my_share_page_view(request):
                 paginator = Paginator(results, 5)
                 page_obj = paginator.get_page(request.GET.get('page'))
     return render(request, 'dashboard/dashboard.html', {'profile': profile_model, 'page_obj': page_obj, 'form': entry_search_form, 'my_shares': True})
+
+
+@login_required
+def story_page_view(request):
+    return render(request, 'dashboard/story.html')
