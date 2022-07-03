@@ -67,18 +67,26 @@ h1{
 
 
 /*Incentives*/
-#diarist,
-#muse,
-#logger,
-#storyteller{
-    margin-top: 50px;
+
+#margin-container{
+    margin-left: 70px;
 }
 
-#diarist div, 
-#muse div, 
+#diarist1 div, 
+#diarist2 div,
+#diarist3 div,
+#diarist4 div,
+#muse1 div, 
+#muse2 div,
+#muse3 div,
+#muse4 div,
 #register div,
-#logger div,
-#storyteller div{
+#logger1 div,
+#logger2 div,
+#logger3 div,
+#logger4 div,
+#storyteller1 div,
+#storyteller2 div{
     font-size: 25px;
     position: absolute;
     top: -30px;
@@ -87,10 +95,18 @@ h1{
     left: 150px;
 }
 
-#diarist p, 
+#diarist1 p, 
+#diarist2 p,
+#diarist3 p,
+#diarist4 p,
 #register p,
-#muse p, 
-#storyteller p{
+#muse1 p, 
+#muse2 p,
+#muse3 p,
+#muse4 p,
+#register p,
+#storyteller1 p,
+#storyteller2 p{
     position: absolute;
     top: -5px;
     height: auto;
@@ -98,13 +114,16 @@ h1{
     left: 80px;
 }
 
-#logger p{
+#logger1 p,
+#logger2 p,
+#logger3 p,
+#logger4 p{
     position: absolute;
     top: -5px;
     height: auto;
     text-align: center;
     left: 130px;
-}
+} 
 
 
 
